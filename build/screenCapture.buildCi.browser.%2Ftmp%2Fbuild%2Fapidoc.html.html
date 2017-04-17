@@ -1,4 +1,4 @@
-<div class="apidocDiv">
+<html><head></head><body><div class="apidocDiv">
 <style>
 /*csslint
 */
@@ -47,17 +47,10 @@
 }
 </style>
 <h1>api documentation for
-    <a
-
-        href="https://greenkeeper.io"
-
-    >greenkeeper (v4.2.1)</a>
+    <a href="https://greenkeeper.io">greenkeeper (v4.2.1)</a>
 </h1>
 <h4>Your software, up to date, all the time</h4>
-<div class="apidocSectionDiv"><a
-    href="#apidoc.tableOfContents"
-    id="apidoc.tableOfContents"
-><h1>table of contents</h1></a><ol>
+<div class="apidocSectionDiv"><a href="#apidoc.tableOfContents" id="apidoc.tableOfContents"><h1>table of contents</h1></a><ol>
 
     <li class="apidocModuleLi"><a href="#apidoc.module.greenkeeper">module greenkeeper</a><ol>
 
@@ -548,52 +541,52 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">function greenkeeper() {
-  if (pkg.version !== &#x27;0.0.0-placeholder&#x27;) require(&#x27;update-notifier&#x27;)({pkg: pkg}).notify()
+  if (pkg.version !== '0.0.0-placeholder') require('update-notifier')({pkg: pkg}).notify()
 
   log.levels.http = 1500
 
-  log.level = flags.loglevel || &#x27;info&#x27;
-  log.headingStyle = {fg: &#x27;white&#x27;}
-  log.heading = process.platform === &#x27;darwin&#x27; ? emoji.get(&#x27;palm_tree&#x27;) + &#x27; &#x27; : &#x27;&#x27;
+  log.level = flags.loglevel || 'info'
+  log.headingStyle = {fg: 'white'}
+  log.heading = process.platform === 'darwin' ? emoji.get('palm_tree') + ' ' : ''
 
-  log.verbose(&#x27;cli&#x27;, &#x27;arguments&#x27;, hideSecrets(flags))
+  log.verbose('cli', 'arguments', hideSecrets(flags))
 
   if (flags.version) {
-    console.log(pkg.version || &#x27;development&#x27;)
+    console.log(pkg.version || 'development')
     process.exit(0)
   }
 
-  var command = commands.all[((flags.argv.remain || []).shift() || &#x27;&#x27;).toLowerCase()]
+  var command = commands.all[((flags.argv.remain || []).shift() || '').toLowerCase()]
 
   if (flags.help || !command) {
     process.stdout.write(story.usage())
     process.exit(0)
   }
 
-  if (flags.force) log.warn(&#x27;cli&#x27;, &#x27;using --force&#x27;)
+  if (flags.force) log.warn('cli', 'using --force')
 
-  if (!flags.force &#x26;&#x26; command !== &#x27;config&#x27; &#x26;&#x26; !isURL(flags.api)) {
-    log.error(&#x27;cli&#x27;, &#x27;API endpoint is not a valid URL.&#x27;, flags.api)
+  if (!flags.force &amp;&amp; command !== 'config' &amp;&amp; !isURL(flags.api)) {
+    log.error('cli', 'API endpoint is not a valid URL.', flags.api)
     process.exit(1)
   }
 
-  if (flags.api === &#x27;https://api.greenkeeper.io/&#x27; &#x26;&#x26; (flags.integration_beta_banner || 0) &#x3c; 10) {
-    var boxen = require(&#x27;boxen&#x27;)
-    var chalk = require(&#x27;chalk&#x27;)
-    console.error(boxen(&#x27;Check out our all new GitHub Integration: &#x27; + chalk.yellow(&#x27;https://git.io/uptodate&#x27;), {padding: 1, borderStyle
-: &#x27;double&#x27;, borderColor: &#x27;green&#x27;}))
-    flags._rc.set(&#x27;integration_beta_banner&#x27;, (flags.integration_beta_banner || 0) + 1)
+  if (flags.api === 'https://api.greenkeeper.io/' &amp;&amp; (flags.integration_beta_banner || 0) &lt; 10) {
+    var boxen = require('boxen')
+    var chalk = require('chalk')
+    console.error(boxen('Check out our all new GitHub Integration: ' + chalk.yellow('https://git.io/uptodate'), {padding: 1, borderStyle
+: 'double', borderColor: 'green'}))
+    flags._rc.set('integration_beta_banner', (flags.integration_beta_banner || 0) + 1)
   }
 
-  process.on(&#x27;exit&#x27;, function (code) {
+  process.on('exit', function (code) {
     if (code !== 2) return
 
-    var chalk = require(&#x27;chalk&#x27;)
-    log.error(&#x27;unknown&#x27;, &#x27;Uhm, this was an unexpected error. Please try again.&#x27;)
-    log.error(&#x27;unknown&#x27;, &#x27;If this keeps reappearing – please let us know &#x27; + chalk.yellow(&#x27;greenkeeper support&#x27;))
+    var chalk = require('chalk')
+    log.error('unknown', 'Uhm, this was an unexpected error. Please try again.')
+    log.error('unknown', 'If this keeps reappearing â€“Â&nbsp;please let us know ' + chalk.yellow('greenkeeper support'))
   })
 
-  require(&#x27;./&#x27; + command)(flags, pkg)
+  require('./' + command)(flags, pkg)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -612,25 +605,25 @@
   var command = commands.shift()
 
   switch (aliases[command]) {
-    case &#x27;get&#x27;:
+    case 'get':
       return get(commands)
-    case &#x27;set&#x27;:
+    case 'set':
       return set(commands)
-    case &#x27;delete&#x27;:
+    case 'delete':
       return del(commands)
-    case &#x27;list&#x27;:
+    case 'list':
       return list(commands)
-    case &#x27;path&#x27;:
+    case 'path':
       return console.log(rc.getPath())
     default:
-      log.info(&#x27;config&#x27;, rc.getPath())
-      log.error(&#x27;config&#x27;, [
-        &#x27;Usage:&#x27;,
-        chalk.yellow(&#x27;greenkeeper config set &#x3c;key&#x3e; &#x3c;value&#x3e;&#x27;),
-        chalk.yellow(&#x27;greenkeeper config get [&#x3c;key&#x3e;]&#x27;),
-        chalk.yellow(&#x27;greenkeeper config delete &#x3c;key&#x3e;&#x27;),
-        chalk.yellow(&#x27;greenkeeper config list&#x27;)
-      ].join(&#x27;\n&#x27;))
+      log.info('config', rc.getPath())
+      log.error('config', [
+        'Usage:',
+        chalk.yellow('greenkeeper config set &lt;key&gt; &lt;value&gt;'),
+        chalk.yellow('greenkeeper config get [&lt;key&gt;]'),
+        chalk.yellow('greenkeeper config delete &lt;key&gt;'),
+        chalk.yellow('greenkeeper config list')
+      ].join('\n'))
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -646,55 +639,55 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">disable = function (flags) {
-  log.verbose(&#x27;disable&#x27;, &#x27;Starting command&#x27;)
+  log.verbose('disable', 'Starting command')
 
   if (!flags.token) {
-    log.error(&#x27;disable&#x27;, story.error_login_first)
+    log.error('disable', story.error_login_first)
     process.exit(1)
   }
 
   if (flags.slug) return disableCommand(null, flags.slug)
 
-  require(&#x27;github-slug&#x27;)(process.cwd(), disableCommand)
+  require('github-slug')(process.cwd(), disableCommand)
 
   function disableCommand (err, slug) {
     if (err || !slug) {
-      log.error(&#x27;disable&#x27;, &#x27;Couldn\&#x27;t find a GitHub remote &#x22;origin&#x22; in this folder.\nTry passing the slug explicitly &#x27; + chalk.yellow
-(&#x27;greenkeeper disable --slug &#x3c;user&#x3e;/&#x3c;repository&#x3e;&#x27;))
+      log.error('disable', 'Couldn\'t find a GitHub remote "origin" in this folder.\nTry passing the slug explicitly ' + chalk.yellow
+('greenkeeper disable --slug &lt;user&gt;/&lt;repository&gt;'))
       process.exit(1)
     }
 
-    log.info(&#x27;disable&#x27;, story.repo_info(slug))
+    log.info('disable', story.repo_info(slug))
 
-    log.http(&#x27;disable&#x27;, &#x27;Sending request&#x27;)
+    log.http('disable', 'Sending request')
     request({
-      method: &#x27;DELETE&#x27;,
-      url: flags.api + &#x27;packages&#x27;,
+      method: 'DELETE',
+      url: flags.api + 'packages',
       json: true,
       headers: {
-        Authorization: &#x27;Bearer &#x27; + flags.token
+        Authorization: 'Bearer ' + flags.token
       },
       body: {slug: slug}
     }, function (err, res, data) {
       if (err) {
-        log.error(&#x27;disable&#x27;, err.message)
+        log.error('disable', err.message)
         process.exit(2)
       }
 
       if (!data) {
-        log.error(&#x27;disable&#x27;, story.error_no_data)
+        log.error('disable', story.error_no_data)
         process.exit(2)
       }
 
       if (data.noChange) {
-        return log.error(&#x27;disable&#x27;, story.error_no_change(slug)) // TODO: We might not need this
+        return log.error('disable', story.error_no_change(slug)) // TODO: We might not need this
       }
 
       if (data.ok) {
         return console.log(story.disabled(slug))
       }
 
-      log.error(&#x27;disable&#x27;, res.statusMessage + (res.body.message ? &#x27;: &#x27; + res.body.message : &#x27;&#x27;))
+      log.error('disable', res.statusMessage + (res.body.message ? ': ' + res.body.message : ''))
       process.exit(2)
     })
   }
@@ -712,112 +705,112 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">enable = function (flags) {
-  log.verbose(&#x27;enable&#x27;, &#x27;Starting command&#x27;)
+  log.verbose('enable', 'Starting command')
 
   if (!flags.token) {
-    log.error(&#x27;enable&#x27;, story.error_login_first)
+    log.error('enable', story.error_login_first)
     process.exit(1)
   }
 
   if (flags.slug) return enableCommand(null, flags.slug)
 
-  require(&#x27;github-slug&#x27;)(process.cwd(), enableCommand)
+  require('github-slug')(process.cwd(), enableCommand)
 
   function enableCommand (err, slug) {
     if (err || !slug) {
-      log.error(&#x27;enable&#x27;, &#x27;Couldn’t find a GitHub remote &#x22;origin&#x22; in this folder.\nTry passing the slug explicitly &#x27; + chalk.yellow
-(&#x27;greenkeeper enable --slug &#x3c;user&#x3e;/&#x3c;repository&#x3e;&#x27;))
+      log.error('enable', 'Couldnâ€™t find a GitHub remote "origin" in this folder.\nTry passing the slug explicitly ' + chalk.yellow
+('greenkeeper enable --slug &lt;user&gt;/&lt;repository&gt;'))
       process.exit(1)
     }
 
     var pkg = {}
     if (!flags.slug) {
       try {
-        pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), &#x27;package.json&#x27;)))
+        pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json')))
       } catch (e) {
-        log.warn(&#x27;enable&#x27;, &#x27;No package.json present, you won’t receive pull requests&#x27;)
+        log.warn('enable', 'No package.json present, you wonâ€™t receive pull requests')
       }
 
       checkTravisyml(pkg)
     }
-    var scoped = _.get(pkg, &#x27;name[0]&#x27;) === &#x27;@&#x27;
+    var scoped = _.get(pkg, 'name[0]') === '@'
 
-    log.info(&#x27;enable&#x27;, &#x27;The GitHub slug is:&#x27;, slug)
+    log.info('enable', 'The GitHub slug is:', slug)
 
     enable(false)
 
     function enable (isSynced) {
-      log.http(&#x27;enable&#x27;, &#x27;Sending request&#x27;)
+      log.http('enable', 'Sending request')
       request({
-        method: &#x27;POST&#x27;,
-        url: flags.api + &#x27;packages&#x27;,
+        method: 'POST',
+        url: flags.api + 'packages',
         json: true,
         headers: {
-          Authorization: &#x27;Bearer &#x27; + flags.token
+          Authorization: 'Bearer ' + flags.token
         },
         body: {slug: slug, manual_webhooks: flags.admin === false}
       }, function (err, res, data) {
         if (err) {
-          log.error(&#x27;enable&#x27;, err.message)
+          log.error('enable', err.message)
           process.exit(2)
         }
 
         if (!data) {
-          return log.error(&#x27;enable&#x27;, story.error_no_data)
+          return log.error('enable', story.error_no_data)
         }
 
         if (data.noChange) {
-          return log.error(&#x27;enable&#x27;, story.error_no_change(slug)) // TODO: We might not need this
+          return log.error('enable', story.error_no_change(slug)) // TODO: We might not need this
         }
 
         if (data.ok) {
           console.log(story.enabled(slug))
 
           if (data.webhooks_secret) {
-            var url = &#x27;https://greenkeeper.io/manual-webhooks.html?&#x27; + qs.encode({
+            var url = 'https://greenkeeper.io/manual-webhooks.html?' + qs.encode({
               slug: slug,
               secret: data.webhooks_secret
             })
             open(url, function (err, stdout, stderr) {
               if (err) {
-                console.log(&#x27;Get webhooks setup instructions at this URL:&#x27;, url)
+                console.log('Get webhooks setup instructions at this URL:', url)
               }
             })
           }
 
           if (!scoped || flags.slug || flags.postpublish === false) process.exit()
 
-          log.info(&#x27;enable&#x27;, &#x27;This is a scoped package.&#x27;)
-          log.info(&#x27;enable&#x27;, &#x27;Installing greenkeeper-postpublish module to automatically announce new versions.&#x27;)
+          log.info('enable', 'This is a scoped package.')
+          log.info('enable', 'Installing greenkeeper-postpublish module to automatically announce new versions.')
 
           return postpublish(flags)
         }
 
         if (data.statusCode === 403) {
-          log.error(&#x27;enable&#x27;, &#x27;Admin access is required to enable a repository.&#x27;)
-          log.error(&#x27;enable&#x27;, &#x27;Please ask an admin on your team to enable Greenkeeper.&#x27;)
+          log.error('enable', 'Admin access is required to enable a repository.')
+          log.error('enable', 'Please ask an admin on your team to enable Greenkeeper.')
           process.exit(1)
         }
 
         if (data.statusCode !== 400) {
-          log.error(&#x27;enable&#x27;, res.statusMessage + (res.body.message ? &#x27;: &#x27; + res.body.message : &#x27;&#x27;))
+          log.error('enable', res.statusMessage + (res.body.message ? ': ' + res.body.message : ''))
           process.exit(2)
         }
 
         if (isSynced) exitWithError(slug)
 
-        log.verbose(&#x27;enable&#x27;, &#x27;Repository not found. Starting a sync.&#x27;)
-        log.info(&#x27;enable&#x27;, &#x27;Synchronizing your repositories. This might take a while.&#x27;)
+        log.verbose('enable', 'Repository not found. Starting a sync.')
+        log.info('enable', 'Synchronizing your repositories. This might take a while.')
         sync(flags, function (err, repos) {
           if (err) {
-            log.error(&#x27;enable&#x27;, &#x27;Synchronizing the repositories was not possible.&#x27;)
+            log.error('enable', 'Synchronizing the repositories was not possible.')
             exitWithError(slug)
           }
           if (_.includes(repos, slug)) {
-            log.verbose(&#x27;enable&#x27;, &#x27;Repository found after sync. Trying to enable again.&#x27;)
+            log.verbose('enable', 'Repository found after sync. Trying to enable again.')
             return enable(true)
           }
-          log.verbose(&#x27;enable&#x27;, &#x27;Repository not found after sync.&#x27;)
+          log.verbose('enable', 'Repository not found after sync.')
           exitWithError(slug)
         })
       })
@@ -837,8 +830,8 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">evilhackerdude = function (flags) {
-  console.log(&#x27;We have content addressed you!&#x27;)
-  open(&#x27;https://www.youtube.com/watch?v=TrcT7sseLZI&#x27;)
+  console.log('We have content addressed you!')
+  open('https://www.youtube.com/watch?v=TrcT7sseLZI')
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -853,10 +846,10 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">faq = function (flags) {
-  log.verbose(&#x27;faq&#x27;, &#x27;starting command&#x27;)
-  log.info(&#x27;faq&#x27;, &#x27;Opening FAQ website&#x27;)
+  log.verbose('faq', 'starting command')
+  log.info('faq', 'Opening FAQ website')
 
-  open(&#x27;https://greenkeeper.io/faq.html&#x27;)
+  open('https://greenkeeper.io/faq.html')
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -871,97 +864,97 @@
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">info = function (flags) {
-  log.verbose(&#x27;info&#x27;, &#x27;Starting command&#x27;)
+  log.verbose('info', 'Starting command')
 
   if (!flags.token) {
-    log.error(&#x27;info&#x27;, story.error_login_first)
+    log.error('info', story.error_login_first)
     process.exit(1)
   }
 
   if (flags.slug) return infoCommand(null, flags.slug)
 
-  require(&#x27;github-slug&#x27;)(process.cwd(), infoCommand)
+  require('github-slug')(process.cwd(), infoCommand)
 
   function infoCommand (err, slug) {
     if (err || !slug) {
-      log.error(&#x27;disable&#x27;, &#x27;Couldn\&#x27;t find a remote GitHub repository in this folder.\nTry passing the slug explicitly &#x27; + chalk
-.yellow(&#x27;greenkeeper enable --slug &#x3c;user&#x3e;/&#x3c;repository&#x3e;&#x27;))
+      log.error('disable', 'Couldn\'t find a remote GitHub repository in this folder.\nTry passing the slug explicitly ' + chalk
+.yellow('greenkeeper enable --slug &lt;user&gt;/&lt;repository&gt;'))
       process.exit(1)
     }
 
-    log.info(&#x27;info&#x27;, &#x27;The GitHub slug is:&#x27;, slug)
+    log.info('info', 'The GitHub slug is:', slug)
 
-    log.http(&#x27;info&#x27;, &#x27;Sending request&#x27;)
+    log.http('info', 'Sending request')
     request({
-      method: &#x27;GET&#x27;,
-      url: flags.api + &#x27;packages/&#x27; + slug + &#x27;?include_branches=true&#x27;,
+      method: 'GET',
+      url: flags.api + 'packages/' + slug + '?include_branches=true',
       json: true,
       headers: {
-        Authorization: &#x27;Bearer &#x27; + flags.token
+        Authorization: 'Bearer ' + flags.token
       }
     }, function (err, res, data) {
       if (err) {
-        log.error(&#x27;info&#x27;, err.message)
+        log.error('info', err.message)
         process.exit(2)
       }
 
       if (data.disabled) {
-        log.error(&#x27;info&#x27;, &#x27;greenkeeper isn’t enabled for this repository&#x27;)
+        log.error('info', 'greenkeeper isnâ€™t enabled for this repository')
         process.exit(1)
       }
 
       if (data.statusCode === 400) {
-        log.error(&#x27;info&#x27;, &#x27;Couldn’t find a repository with this slug.&#x27;)
-        log.error(&#x27;info&#x27;, &#x27;The repository has to exist on GitHub and it has to be public,&#x27;)
-        log.error(&#x27;info&#x27;, &#x27;or you have to have to have a private plan. To verify run &#x27; + chalk.yellow(&#x27;greenkeeper whoami&#x27;))
-        log.error(&#x27;info&#x27;, &#x27;If you have just recently created this repository try running &#x27; + chalk.yellow(&#x27;greenkeeper sync&#x27;))
-        log.error(&#x27;info&#x27;, &#x27;You need admin access to enable repositories.&#x27;)
-        log.error(&#x27;info&#x27;, &#x27;If you think this error really shouldn’t appear let us look into it with &#x27; + chalk.yellow(&#x27;greenkeeper
- support&#x27;))
+        log.error('info', 'Couldnâ€™t find a repository with this slug.')
+        log.error('info', 'The repository has to exist on GitHub and it has to be public,')
+        log.error('info', 'or you have to have to have a private plan. To verify run ' + chalk.yellow('greenkeeper whoami'))
+        log.error('info', 'If you have just recently created this repository try running ' + chalk.yellow('greenkeeper sync'))
+        log.error('info', 'You need admin access to enable repositories.')
+        log.error('info', 'If you think this error really shouldnâ€™t appear let us look into it with ' + chalk.yellow('greenkeeper
+ support'))
         process.exit(1)
       }
 
       if (data.statusCode === 409) {
-        log.error(&#x27;info&#x27;, &#x27;Conflict! We appear to have this repository in our system several times\nThis can happen if you have
-moved or recreated the repository\nWe can fix this though, please contact us at &#x27; + chalk.yellow(&#x27;greenkeeper support&#x27;))
+        log.error('info', 'Conflict! We appear to have this repository in our system several times\nThis can happen if you have
+moved or recreated the repository\nWe can fix this though, please contact us at ' + chalk.yellow('greenkeeper support'))
         process.exit(1)
       }
 
       if (data.error) {
-        log.error(&#x27;info&#x27;, data.error)
+        log.error('info', data.error)
         process.exit(2)
       }
 
-      console.log(&#x27;greenkeeper is enabled for this repository&#x27;)
+      console.log('greenkeeper is enabled for this repository')
       var prs = data.branches
         .filter(function (branch) {
-          return branch.pr &#x26;&#x26; branch.pr.state === &#x27;open&#x27;
+          return branch.pr &amp;&amp; branch.pr.state === 'open'
         })
-      if (prs.length &#x3e; 0) console.log(&#x27;Open pull requests: &#x27;)
+      if (prs.length &gt; 0) console.log('Open pull requests: ')
       prs.forEach(function (branch) {
-        console.log(&#x27;- &#x27; + chalk.green(&#x27;#&#x27; + branch.pr.number) + &#x27; &#x27; + branch.dependency + &#x27;@&#x27; + branch.version + &#x27; &#x27; + chalk.grey
+        console.log('- ' + chalk.green('#' + branch.pr.number) + ' ' + branch.dependency + '@' + branch.version + ' ' + chalk.grey
 (moment(branch.created_at).fromNow()))
       })
-      if (prs.length &#x3e; 0) console.log(&#x27;Older pull requests might not be shown.&#x27;)
+      if (prs.length &gt; 0) console.log('Older pull requests might not be shown.')
     })
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-case &#x27;delete&#x27;:
+case 'delete':
   return del(commands)
-case &#x27;list&#x27;:
+case 'list':
   return list(commands)
-case &#x27;path&#x27;:
+case 'path':
   return console.log(rc.getPath())
 default:
-  log.<span class="apidocCodeKeywordSpan">info</span>(&#x27;config&#x27;, rc.getPath())
-  log.error(&#x27;config&#x27;, [
-    &#x27;Usage:&#x27;,
-    chalk.yellow(&#x27;greenkeeper config set &#x3c;key&#x3e; &#x3c;value&#x3e;&#x27;),
-    chalk.yellow(&#x27;greenkeeper config get [&#x3c;key&#x3e;]&#x27;),
-    chalk.yellow(&#x27;greenkeeper config delete &#x3c;key&#x3e;&#x27;),
-    chalk.yellow(&#x27;greenkeeper config list&#x27;)
-  ].join(&#x27;\n&#x27;))
+  log.<span class="apidocCodeKeywordSpan">info</span>('config', rc.getPath())
+  log.error('config', [
+    'Usage:',
+    chalk.yellow('greenkeeper config set &lt;key&gt; &lt;value&gt;'),
+    chalk.yellow('greenkeeper config get [&lt;key&gt;]'),
+    chalk.yellow('greenkeeper config delete &lt;key&gt;'),
+    chalk.yellow('greenkeeper config list')
+  ].join('\n'))
 ...</pre></li>
     </ul>
 
@@ -990,38 +983,38 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">list = function (flags) {
-  log.verbose(&#x27;list&#x27;, &#x27;starting command&#x27;)
+  log.verbose('list', 'starting command')
 
   if (!flags.token) {
-    log.error(&#x27;list&#x27;, &#x27;Login required. Run &#x27; + chalk.yellow(&#x27;greenkeeper login&#x27;))
+    log.error('list', 'Login required. Run ' + chalk.yellow('greenkeeper login'))
     process.exit(1)
   }
 
-  log.http(&#x27;list&#x27;, &#x27;Sending request&#x27;)
+  log.http('list', 'Sending request')
   request({
-    url: flags.api + &#x27;packages&#x27;,
+    url: flags.api + 'packages',
     json: true,
     headers: {
-      Authorization: &#x27;Bearer &#x27; + flags.token
+      Authorization: 'Bearer ' + flags.token
     }
   }, function (err, res, data) {
     if (err) {
-      log.error(&#x27;list&#x27;, err.message)
+      log.error('list', err.message)
       process.exit(2)
     }
 
     if (!data.packages) {
-      log.error(&#x27;list&#x27;, res.statusMessage + (res.body.message ? &#x27;: &#x27; + res.body.message : &#x27;&#x27;))
+      log.error('list', res.statusMessage + (res.body.message ? ': ' + res.body.message : ''))
       process.exit(2)
     }
 
     if (!data.packages.length) {
-      log.error(&#x27;list&#x27;, &#x27;No repositories enabled yet&#x27;)
+      log.error('list', 'No repositories enabled yet')
     }
-    _.orderBy(data.all, [&#x27;is_enabler&#x27;, &#x27;name&#x27;], [&#x27;desc&#x27;, &#x27;asc&#x27;])
+    _.orderBy(data.all, ['is_enabler', 'name'], ['desc', 'asc'])
     .forEach(function (repo) {
       if (!repo.enabled) return
-      console.log(repo.name, repo.is_enabler ? chalk.green(&#x27;(enabled by you)&#x27;) : &#x27;&#x27;)
+      console.log(repo.name, repo.is_enabler ? chalk.green('(enabled by you)') : '')
     })
   })
 }</pre></li>
@@ -1039,53 +1032,53 @@ default:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">login = function (flags) {
   logo()
-  log.verbose(&#x27;login&#x27;, &#x27;starting command&#x27;)
+  log.verbose('login', 'starting command')
 
-  if (flags.token &#x26;&#x26; !flags.force) {
-    log.error(&#x27;login&#x27;, story.error_already_logged_in)
+  if (flags.token &amp;&amp; !flags.force) {
+    log.error('login', story.error_already_logged_in)
     process.exit(1)
   }
 
   var id = randomString({length: 32})
-  log.verbose(&#x27;login&#x27;, &#x27;id&#x27;, id)
+  log.verbose('login', 'id', id)
 
-  log.verbose(&#x27;login&#x27;, &#x27;Getting token from API and opening GitHub login&#x27;)
+  log.verbose('login', 'Getting token from API and opening GitHub login')
 
   getToken(flags, id, function (data) {
     if (data.disallowedSignup) {
-      log.info(&#x27;login&#x27;, &#x27;Signing up for the old Greenkeeper oAuth application is no longer supported.&#x27;)
-      log.info(&#x27;login&#x27;, &#x27;The new GitHub Integration was opened instead.&#x27;)
+      log.info('login', 'Signing up for the old Greenkeeper oAuth application is no longer supported.')
+      log.info('login', 'The new GitHub Integration was opened instead.')
       return
     }
 
-    rc.set(&#x27;api&#x27;, flags.api)
-    rc.set(nerfDart(flags.api) + &#x27;token&#x27;, data.token)
-    rc.set(nerfDart(flags.api) + &#x27;admin&#x27;, flags.admin)
+    rc.set('api', flags.api)
+    rc.set(nerfDart(flags.api) + 'token', data.token)
+    rc.set(nerfDart(flags.api) + 'admin', flags.admin)
 
-    log.info(&#x27;login&#x27;, &#x27;That was successful, now syncing all your GitHub repositories&#x27;)
+    log.info('login', 'That was successful, now syncing all your GitHub repositories')
     flags.token = data.token
     sync(flags, function (err, repos) {
       if (err) {
-        log.error(&#x27;login&#x27;, err.message)
+        log.error('login', err.message)
         process.exit(2)
       }
-      log.info(&#x27;login&#x27;, &#x27;Done syncing &#x27; + repos.length + &#x27; repositories&#x27;)
-      console.log(&#x27;You are now logged in, synced and all set up!&#x27;)
-      log.info(&#x27;login&#x27;, &#x27;Find out how to get started with&#x27;, &#x27;&#x27; + chalk.yellow(&#x27;greenkeeper start&#x27;))
+      log.info('login', 'Done syncing ' + repos.length + ' repositories')
+      console.log('You are now logged in, synced and all set up!')
+      log.info('login', 'Find out how to get started with', '' + chalk.yellow('greenkeeper start'))
     })
   })
 
-  if (!flags[&#x27;private&#x27;] &#x26;&#x26; !_.has(flags, &#x27;private&#x27;)) {
+  if (!flags['private'] &amp;&amp; !_.has(flags, 'private')) {
     return checkEnterprise(function (err, flags, isEnterprise) {
       if (err) {
-        log.error(&#x27;login&#x27;, err.message)
+        log.error('login', err.message)
         process.exit(2)
       }
       openAuth(isEnterprise)
     })(flags)
   }
 
-  openAuth(flags[&#x27;private&#x27;])
+  openAuth(flags['private'])
 
   function openAuth (pvt) {
     var query = {
@@ -1098,12 +1091,12 @@ default:
       query.access_token = flags.token
     }
 
-    var url = flags.api + &#x27;login?&#x27; + qs.encode(query)
+    var url = flags.api + 'login?' + qs.encode(query)
 
-    log.verbose(&#x27;login&#x27;, &#x27;Open &#x27; + url)
+    log.verbose('login', 'Open ' + url)
     open(url, function (err, stdout, stderr) {
       if (err) {
-        console.log(&#x27;Login from this URL:&#x27;, url)
+        console.log('Login from this URL:', url)
       }
     })
   }
@@ -1121,34 +1114,34 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">logout = function (flags) {
-  log.verbose(&#x27;logout&#x27;, &#x27;starting command&#x27;)
+  log.verbose('logout', 'starting command')
 
   if (!flags.token) {
-    log.error(&#x27;logout&#x27;, story.error_already_logged_out)
+    log.error('logout', story.error_already_logged_out)
     process.exit(1)
   }
 
-  log.http(&#x27;logout&#x27;, &#x27;Sending request&#x27;)
+  log.http('logout', 'Sending request')
   request({
-    method: &#x27;DELETE&#x27;,
+    method: 'DELETE',
     json: true,
-    url: flags.api + &#x27;tokens&#x27;,
+    url: flags.api + 'tokens',
     headers: {
-      Authorization: &#x27;Bearer &#x27; + flags.token
+      Authorization: 'Bearer ' + flags.token
     }
   }, function (err, res, data) {
     if (err) {
-      log.error(&#x27;logout&#x27;, err.message)
+      log.error('logout', err.message)
       process.exit(2)
     }
 
     if (data.ok) {
-      rc.unset(&#x27;token&#x27;)
-      rc.unset(nerfDart(flags.api) + &#x27;token&#x27;)
+      rc.unset('token')
+      rc.unset(nerfDart(flags.api) + 'token')
       return console.log(story.logged_out)
     }
 
-    log.error(&#x27;logout&#x27;, res.statusMessage + (res.body.message ? &#x27;: &#x27; + res.body.message : &#x27;&#x27;))
+    log.error('logout', res.statusMessage + (res.body.message ? ': ' + res.body.message : ''))
     process.exit(2)
   })
 }</pre></li>
@@ -1167,9 +1160,9 @@ default:
     <li>description and source-code<pre class="apidocCodePre">npm_verify = function (flags) {
   var pkg
   try {
-    pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), &#x27;package.json&#x27;)))
+    pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json')))
   } catch (e) {
-    log.error(&#x27;npm-verify&#x27;, &#x27;No package.json in this project&#x27;)
+    log.error('npm-verify', 'No package.json in this project')
     process.exit(1)
   }
 
@@ -1181,20 +1174,20 @@ default:
   ))
 
   var scoped = dependencies.filter(function (dependency) {
-    return dependency[0] === &#x27;@&#x27;
+    return dependency[0] === '@'
   })
 
   if (scoped.length === 0) {
-    log.info(&#x27;npm-verify&#x27;, &#x27;No scoped packages.&#x27;)
+    log.info('npm-verify', 'No scoped packages.')
     process.exit()
   }
 
   request({
-    method: &#x27;POST&#x27;,
-    url: flags.api + &#x27;npm/verify&#x27;,
+    method: 'POST',
+    url: flags.api + 'npm/verify',
     json: true,
     headers: {
-      Authorization: &#x27;Bearer &#x27; + flags.token
+      Authorization: 'Bearer ' + flags.token
     },
     body: {
       dependencies: scoped,
@@ -1202,15 +1195,15 @@ default:
     }
   }, function (err, res, results) {
     if (err) {
-      log.error(&#x27;npm-verify&#x27;, err)
+      log.error('npm-verify', err)
       process.exit(2)
     }
-    var failed = _.some(results.dependencies, [&#x27;valid&#x27;, false])
-    if (failed) log.info(&#x27;npm-verify&#x27;, &#x27;You might need to run &#x27; + chalk.yellow(&#x27;greenkeeper npm-access&#x27;))
+    var failed = _.some(results.dependencies, ['valid', false])
+    if (failed) log.info('npm-verify', 'You might need to run ' + chalk.yellow('greenkeeper npm-access'))
     results.dependencies.forEach(function (dep) {
-      console.log(&#x27;   &#x27;, chalk.bold(dep.name), dep.valid
-        ? process.platform === &#x27;darwin&#x27; ? emoji.get(&#x27;white_check_mark&#x27;) : chalk.green(&#x27;accessible&#x27;)
-        : process.platform === &#x27;darwin&#x27; ? emoji.get(&#x27;x&#x27;) : chalk.red(&#x27;inaccessible&#x27;)
+      console.log('   ', chalk.bold(dep.name), dep.valid
+        ? process.platform === 'darwin' ? emoji.get('white_check_mark') : chalk.green('accessible')
+        : process.platform === 'darwin' ? emoji.get('x') : chalk.red('inaccessible')
       )
     })
     process.exit()
@@ -1229,18 +1222,18 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">organization_access = function (flags) {
-  log.verbose(&#x27;organization-access&#x27;, &#x27;starting command&#x27;)
+  log.verbose('organization-access', 'starting command')
 
   if (!flags.token) {
-    log.info(&#x27;organization-access&#x27;, &#x27;Not logged in.&#x27;)
+    log.info('organization-access', 'Not logged in.')
     process.exit(1)
   }
 
   story.forEach(function (message) {
-    log.info(&#x27;organization-access&#x27;, message)
+    log.info('organization-access', message)
   })
-  var url = flags.api + &#x27;login/organization-access&#x27;
-  log.verbose(&#x27;organization-access&#x27;, &#x27;Open &#x27; + url)
+  var url = flags.api + 'login/organization-access'
+  log.verbose('organization-access', 'Open ' + url)
   open(url)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1256,44 +1249,44 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">postpublish = function (flags) {
-  var pkgPath = path.join(process.cwd(), &#x27;package.json&#x27;)
+  var pkgPath = path.join(process.cwd(), 'package.json')
   var pkgFile = fs.readFileSync(pkgPath)
   var pkg
   try {
     pkg = jsonPreserveIndent(pkgFile)
   } catch (e) {
-    log.error(&#x27;postpublish&#x27;, &#x27;Could not parse package.json&#x27;)
+    log.error('postpublish', 'Could not parse package.json')
     process.exit(1)
   }
 
-  if (pkg.get(&#x27;name[0]&#x27;) !== &#x27;@&#x27;) log.warn(&#x27;postpublish&#x27;, &#x27;This is not a scoped package. &#x22;greenkeeper-postpublish&#x22; should not be
- required.&#x27;)
+  if (pkg.get('name[0]') !== '@') log.warn('postpublish', 'This is not a scoped package. "greenkeeper-postpublish" should not be
+ required.')
 
-  if (pkg.get(&#x27;devDependencies.greenkeeper-postpublish&#x27;)) {
-    log.info(&#x27;postpublish&#x27;, &#x27;greenkeeper-postpublish is already installed&#x27;)
+  if (pkg.get('devDependencies.greenkeeper-postpublish')) {
+    log.info('postpublish', 'greenkeeper-postpublish is already installed')
     process.exit()
   }
 
-  if (pkg.get(&#x27;scripts.postpublish&#x27;)) {
-    log.error(&#x27;postpublish&#x27;, &#x27;There is already a postpublish script present&#x27;, &#x27;&#x22;postpublish&#x22;: &#x22;&#x27; + pkg.scripts.postpublish + &#x27;&#x22;&#x27;)
+  if (pkg.get('scripts.postpublish')) {
+    log.error('postpublish', 'There is already a postpublish script present', '"postpublish": "' + pkg.scripts.postpublish + '"')
     process.exit(1)
   }
 
-  pkg.set(&#x27;scripts.postpublish&#x27;, &#x27;greenkeeper-postpublish&#x27;)
+  pkg.set('scripts.postpublish', 'greenkeeper-postpublish')
 
   fs.writeFileSync(pkgPath, pkg.format())
 
-  log.verbose(&#x27;postpublish&#x27;, &#x27;Updated the package.json&#x27;)
+  log.verbose('postpublish', 'Updated the package.json')
 
-  log.info(&#x27;postpublish&#x27;, &#x27;Installing greenkeeper-postpublish&#x27;)
+  log.info('postpublish', 'Installing greenkeeper-postpublish')
   var spin = spinner()
-  exec(&#x27;npm install greenkeeper-postpublish --save-dev&#x27;, function (err, stdout, stderr) {
+  exec('npm install greenkeeper-postpublish --save-dev', function (err, stdout, stderr) {
     clearInterval(spin)
     if (err) {
-      log.error(&#x27;postpublish&#x27;, &#x27;Failed to install greenkeeper-postpublish&#x27;, err)
+      log.error('postpublish', 'Failed to install greenkeeper-postpublish', err)
       process.exit(1)
     }
-    log.info(&#x27;postpublish&#x27;, &#x27;greenkeeper-postpublish installed and added as devDependency&#x27;)
+    log.info('postpublish', 'greenkeeper-postpublish installed and added as devDependency')
   })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1309,12 +1302,12 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">signup = function (flags) {
-  log.verbose(&#x27;signup&#x27;, &#x27;starting command&#x27;)
+  log.verbose('signup', 'starting command')
 
-  log.info(&#x27;signup&#x27;, &#x27;Signing up for the old Greenkeeper oAuth application is no longer supported.&#x27;)
-  log.info(&#x27;signup&#x27;, &#x27;Opening the new GitHub Integration instead.&#x27;)
+  log.info('signup', 'Signing up for the old Greenkeeper oAuth application is no longer supported.')
+  log.info('signup', 'Opening the new GitHub Integration instead.')
 
-  open(&#x27;https://git.io/uptodate&#x27;)
+  open('https://git.io/uptodate')
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1344,17 +1337,17 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">support = function (flags) {
-  log.verbose(&#x27;support&#x27;, &#x27;starting command&#x27;)
+  log.verbose('support', 'starting command')
 
   if (!flags.token) {
-    log.info(&#x27;support&#x27;, &#x27;Not logged in. Opening GitHub issues.&#x27;)
-    open(&#x27;https://github.com/greenkeeperio/greenkeeper&#x27;)
+    log.info('support', 'Not logged in. Opening GitHub issues.')
+    open('https://github.com/greenkeeperio/greenkeeper')
     process.exit(1)
   }
 
-  log.info(&#x27;support&#x27;, &#x27;Opening GitHub issues (free plan) or Intercom&#x27;)
+  log.info('support', 'Opening GitHub issues (free plan) or Intercom')
 
-  open(flags.api + &#x27;support?access_token=&#x27; + flags.token)
+  open(flags.api + 'support?access_token=' + flags.token)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1369,21 +1362,21 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">sync = function (flags) {
-  log.verbose(&#x27;sync&#x27;, &#x27;starting command&#x27;)
+  log.verbose('sync', 'starting command')
 
   if (!flags.token) {
-    log.error(&#x27;sync&#x27;, story.error_no_login_first)
+    log.error('sync', story.error_no_login_first)
     process.exit(1)
   }
 
-  log.http(&#x27;sync&#x27;, &#x27;Sending request&#x27;)
-  log.info(&#x27;sync&#x27;, &#x27;This might take a while&#x27;)
+  log.http('sync', 'Sending request')
+  log.info('sync', 'This might take a while')
   sync(flags, function (err, repos) {
     if (err) {
-      log.error(&#x27;sync&#x27;, err.message)
+      log.error('sync', err.message)
       process.exit(2)
     }
-    console.log(repos.sort().join(&#x27;\n&#x27;))
+    console.log(repos.sort().join('\n'))
   })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1414,15 +1407,15 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">upgrade = function (flags) {
-  if (flags.api === &#x27;https://api.greenkeeper.io/&#x27;) return callback(null, flags, false)
+  if (flags.api === 'https://api.greenkeeper.io/') return callback(null, flags, false)
   request({
-    method: &#x27;GET&#x27;,
+    method: 'GET',
     json: true,
     url: flags.api
   }, function (err, res, data) {
     if (err) return callback(err, flags)
     if (res.statusCode !== 200) return callback(new Error(res.statusCode), flags)
-    callback(null, flags, data.environment === &#x27;enterprise&#x27;)
+    callback(null, flags, data.environment === 'enterprise')
   })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1438,10 +1431,10 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">web_app = function (flags) {
-  var url = &#x27;https://app.greenkeeper.io&#x27;
+  var url = 'https://app.greenkeeper.io'
   open(url, function (err) {
-    if (err) return console.log(&#x27;Open this URL:&#x27;, url)
-    rc.set(&#x27;web_interface_beta_banner&#x27;, 11)
+    if (err) return console.log('Open this URL:', url)
+    rc.set('web_interface_beta_banner', 11)
   })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1457,30 +1450,30 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">whoami = function (flags) {
-  log.verbose(&#x27;whoami&#x27;, &#x27;starting command&#x27;)
+  log.verbose('whoami', 'starting command')
 
   if (!flags.token) {
-    log.error(&#x27;whoami&#x27;, &#x27;Login required. Run &#x27; + chalk.yellow(&#x27;greenkeeper login&#x27;))
+    log.error('whoami', 'Login required. Run ' + chalk.yellow('greenkeeper login'))
     process.exit(1)
   }
 
-  log.info(&#x27;whoami&#x27;, &#x27;If you’re missing organizations run &#x27; + chalk.yellow(&#x27;greenkeeper access&#x27;))
+  log.info('whoami', 'If youâ€™re missing organizations run ' + chalk.yellow('greenkeeper access'))
 
-  log.http(&#x27;whoami&#x27;, &#x27;Sending request&#x27;)
+  log.http('whoami', 'Sending request')
   request({
-    url: flags.api + &#x27;whoami&#x27;,
+    url: flags.api + 'whoami',
     json: true,
     headers: {
-      Authorization: &#x27;Bearer &#x27; + flags.token
+      Authorization: 'Bearer ' + flags.token
     }
   }, function (err, res, data) {
     if (err) {
-      log.error(&#x27;whoami&#x27;, err.message)
+      log.error('whoami', err.message)
       process.exit(2)
     }
 
     if (!data.name) {
-      log.error(&#x27;whoami&#x27;, res.statusMessage + (res.body.message ? &#x27;: &#x27; + res.body.message : &#x27;&#x27;))
+      log.error('whoami', res.statusMessage + (res.body.message ? ': ' + res.body.message : ''))
       process.exit(2)
     }
 
@@ -1509,25 +1502,25 @@ default:
   var command = commands.shift()
 
   switch (aliases[command]) {
-    case &#x27;get&#x27;:
+    case 'get':
       return get(commands)
-    case &#x27;set&#x27;:
+    case 'set':
       return set(commands)
-    case &#x27;delete&#x27;:
+    case 'delete':
       return del(commands)
-    case &#x27;list&#x27;:
+    case 'list':
       return list(commands)
-    case &#x27;path&#x27;:
+    case 'path':
       return console.log(rc.getPath())
     default:
-      log.info(&#x27;config&#x27;, rc.getPath())
-      log.error(&#x27;config&#x27;, [
-        &#x27;Usage:&#x27;,
-        chalk.yellow(&#x27;greenkeeper config set &#x3c;key&#x3e; &#x3c;value&#x3e;&#x27;),
-        chalk.yellow(&#x27;greenkeeper config get [&#x3c;key&#x3e;]&#x27;),
-        chalk.yellow(&#x27;greenkeeper config delete &#x3c;key&#x3e;&#x27;),
-        chalk.yellow(&#x27;greenkeeper config list&#x27;)
-      ].join(&#x27;\n&#x27;))
+      log.info('config', rc.getPath())
+      log.error('config', [
+        'Usage:',
+        chalk.yellow('greenkeeper config set &lt;key&gt; &lt;value&gt;'),
+        chalk.yellow('greenkeeper config get [&lt;key&gt;]'),
+        chalk.yellow('greenkeeper config delete &lt;key&gt;'),
+        chalk.yellow('greenkeeper config list')
+      ].join('\n'))
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -1548,55 +1541,55 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">disable = function (flags) {
-  log.verbose(&#x27;disable&#x27;, &#x27;Starting command&#x27;)
+  log.verbose('disable', 'Starting command')
 
   if (!flags.token) {
-    log.error(&#x27;disable&#x27;, story.error_login_first)
+    log.error('disable', story.error_login_first)
     process.exit(1)
   }
 
   if (flags.slug) return disableCommand(null, flags.slug)
 
-  require(&#x27;github-slug&#x27;)(process.cwd(), disableCommand)
+  require('github-slug')(process.cwd(), disableCommand)
 
   function disableCommand (err, slug) {
     if (err || !slug) {
-      log.error(&#x27;disable&#x27;, &#x27;Couldn\&#x27;t find a GitHub remote &#x22;origin&#x22; in this folder.\nTry passing the slug explicitly &#x27; + chalk.yellow
-(&#x27;greenkeeper disable --slug &#x3c;user&#x3e;/&#x3c;repository&#x3e;&#x27;))
+      log.error('disable', 'Couldn\'t find a GitHub remote "origin" in this folder.\nTry passing the slug explicitly ' + chalk.yellow
+('greenkeeper disable --slug &lt;user&gt;/&lt;repository&gt;'))
       process.exit(1)
     }
 
-    log.info(&#x27;disable&#x27;, story.repo_info(slug))
+    log.info('disable', story.repo_info(slug))
 
-    log.http(&#x27;disable&#x27;, &#x27;Sending request&#x27;)
+    log.http('disable', 'Sending request')
     request({
-      method: &#x27;DELETE&#x27;,
-      url: flags.api + &#x27;packages&#x27;,
+      method: 'DELETE',
+      url: flags.api + 'packages',
       json: true,
       headers: {
-        Authorization: &#x27;Bearer &#x27; + flags.token
+        Authorization: 'Bearer ' + flags.token
       },
       body: {slug: slug}
     }, function (err, res, data) {
       if (err) {
-        log.error(&#x27;disable&#x27;, err.message)
+        log.error('disable', err.message)
         process.exit(2)
       }
 
       if (!data) {
-        log.error(&#x27;disable&#x27;, story.error_no_data)
+        log.error('disable', story.error_no_data)
         process.exit(2)
       }
 
       if (data.noChange) {
-        return log.error(&#x27;disable&#x27;, story.error_no_change(slug)) // TODO: We might not need this
+        return log.error('disable', story.error_no_change(slug)) // TODO: We might not need this
       }
 
       if (data.ok) {
         return console.log(story.disabled(slug))
       }
 
-      log.error(&#x27;disable&#x27;, res.statusMessage + (res.body.message ? &#x27;: &#x27; + res.body.message : &#x27;&#x27;))
+      log.error('disable', res.statusMessage + (res.body.message ? ': ' + res.body.message : ''))
       process.exit(2)
     })
   }
@@ -1619,112 +1612,112 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">enable = function (flags) {
-  log.verbose(&#x27;enable&#x27;, &#x27;Starting command&#x27;)
+  log.verbose('enable', 'Starting command')
 
   if (!flags.token) {
-    log.error(&#x27;enable&#x27;, story.error_login_first)
+    log.error('enable', story.error_login_first)
     process.exit(1)
   }
 
   if (flags.slug) return enableCommand(null, flags.slug)
 
-  require(&#x27;github-slug&#x27;)(process.cwd(), enableCommand)
+  require('github-slug')(process.cwd(), enableCommand)
 
   function enableCommand (err, slug) {
     if (err || !slug) {
-      log.error(&#x27;enable&#x27;, &#x27;Couldn’t find a GitHub remote &#x22;origin&#x22; in this folder.\nTry passing the slug explicitly &#x27; + chalk.yellow
-(&#x27;greenkeeper enable --slug &#x3c;user&#x3e;/&#x3c;repository&#x3e;&#x27;))
+      log.error('enable', 'Couldnâ€™t find a GitHub remote "origin" in this folder.\nTry passing the slug explicitly ' + chalk.yellow
+('greenkeeper enable --slug &lt;user&gt;/&lt;repository&gt;'))
       process.exit(1)
     }
 
     var pkg = {}
     if (!flags.slug) {
       try {
-        pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), &#x27;package.json&#x27;)))
+        pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json')))
       } catch (e) {
-        log.warn(&#x27;enable&#x27;, &#x27;No package.json present, you won’t receive pull requests&#x27;)
+        log.warn('enable', 'No package.json present, you wonâ€™t receive pull requests')
       }
 
       checkTravisyml(pkg)
     }
-    var scoped = _.get(pkg, &#x27;name[0]&#x27;) === &#x27;@&#x27;
+    var scoped = _.get(pkg, 'name[0]') === '@'
 
-    log.info(&#x27;enable&#x27;, &#x27;The GitHub slug is:&#x27;, slug)
+    log.info('enable', 'The GitHub slug is:', slug)
 
     enable(false)
 
     function enable (isSynced) {
-      log.http(&#x27;enable&#x27;, &#x27;Sending request&#x27;)
+      log.http('enable', 'Sending request')
       request({
-        method: &#x27;POST&#x27;,
-        url: flags.api + &#x27;packages&#x27;,
+        method: 'POST',
+        url: flags.api + 'packages',
         json: true,
         headers: {
-          Authorization: &#x27;Bearer &#x27; + flags.token
+          Authorization: 'Bearer ' + flags.token
         },
         body: {slug: slug, manual_webhooks: flags.admin === false}
       }, function (err, res, data) {
         if (err) {
-          log.error(&#x27;enable&#x27;, err.message)
+          log.error('enable', err.message)
           process.exit(2)
         }
 
         if (!data) {
-          return log.error(&#x27;enable&#x27;, story.error_no_data)
+          return log.error('enable', story.error_no_data)
         }
 
         if (data.noChange) {
-          return log.error(&#x27;enable&#x27;, story.error_no_change(slug)) // TODO: We might not need this
+          return log.error('enable', story.error_no_change(slug)) // TODO: We might not need this
         }
 
         if (data.ok) {
           console.log(story.enabled(slug))
 
           if (data.webhooks_secret) {
-            var url = &#x27;https://greenkeeper.io/manual-webhooks.html?&#x27; + qs.encode({
+            var url = 'https://greenkeeper.io/manual-webhooks.html?' + qs.encode({
               slug: slug,
               secret: data.webhooks_secret
             })
             open(url, function (err, stdout, stderr) {
               if (err) {
-                console.log(&#x27;Get webhooks setup instructions at this URL:&#x27;, url)
+                console.log('Get webhooks setup instructions at this URL:', url)
               }
             })
           }
 
           if (!scoped || flags.slug || flags.postpublish === false) process.exit()
 
-          log.info(&#x27;enable&#x27;, &#x27;This is a scoped package.&#x27;)
-          log.info(&#x27;enable&#x27;, &#x27;Installing greenkeeper-postpublish module to automatically announce new versions.&#x27;)
+          log.info('enable', 'This is a scoped package.')
+          log.info('enable', 'Installing greenkeeper-postpublish module to automatically announce new versions.')
 
           return postpublish(flags)
         }
 
         if (data.statusCode === 403) {
-          log.error(&#x27;enable&#x27;, &#x27;Admin access is required to enable a repository.&#x27;)
-          log.error(&#x27;enable&#x27;, &#x27;Please ask an admin on your team to enable Greenkeeper.&#x27;)
+          log.error('enable', 'Admin access is required to enable a repository.')
+          log.error('enable', 'Please ask an admin on your team to enable Greenkeeper.')
           process.exit(1)
         }
 
         if (data.statusCode !== 400) {
-          log.error(&#x27;enable&#x27;, res.statusMessage + (res.body.message ? &#x27;: &#x27; + res.body.message : &#x27;&#x27;))
+          log.error('enable', res.statusMessage + (res.body.message ? ': ' + res.body.message : ''))
           process.exit(2)
         }
 
         if (isSynced) exitWithError(slug)
 
-        log.verbose(&#x27;enable&#x27;, &#x27;Repository not found. Starting a sync.&#x27;)
-        log.info(&#x27;enable&#x27;, &#x27;Synchronizing your repositories. This might take a while.&#x27;)
+        log.verbose('enable', 'Repository not found. Starting a sync.')
+        log.info('enable', 'Synchronizing your repositories. This might take a while.')
         sync(flags, function (err, repos) {
           if (err) {
-            log.error(&#x27;enable&#x27;, &#x27;Synchronizing the repositories was not possible.&#x27;)
+            log.error('enable', 'Synchronizing the repositories was not possible.')
             exitWithError(slug)
           }
           if (_.includes(repos, slug)) {
-            log.verbose(&#x27;enable&#x27;, &#x27;Repository found after sync. Trying to enable again.&#x27;)
+            log.verbose('enable', 'Repository found after sync. Trying to enable again.')
             return enable(true)
           }
-          log.verbose(&#x27;enable&#x27;, &#x27;Repository not found after sync.&#x27;)
+          log.verbose('enable', 'Repository not found after sync.')
           exitWithError(slug)
         })
       })
@@ -1749,8 +1742,8 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">evilhackerdude = function (flags) {
-  console.log(&#x27;We have content addressed you!&#x27;)
-  open(&#x27;https://www.youtube.com/watch?v=TrcT7sseLZI&#x27;)
+  console.log('We have content addressed you!')
+  open('https://www.youtube.com/watch?v=TrcT7sseLZI')
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1770,10 +1763,10 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">faq = function (flags) {
-  log.verbose(&#x27;faq&#x27;, &#x27;starting command&#x27;)
-  log.info(&#x27;faq&#x27;, &#x27;Opening FAQ website&#x27;)
+  log.verbose('faq', 'starting command')
+  log.info('faq', 'Opening FAQ website')
 
-  open(&#x27;https://greenkeeper.io/faq.html&#x27;)
+  open('https://greenkeeper.io/faq.html')
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -1793,97 +1786,97 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">info = function (flags) {
-  log.verbose(&#x27;info&#x27;, &#x27;Starting command&#x27;)
+  log.verbose('info', 'Starting command')
 
   if (!flags.token) {
-    log.error(&#x27;info&#x27;, story.error_login_first)
+    log.error('info', story.error_login_first)
     process.exit(1)
   }
 
   if (flags.slug) return infoCommand(null, flags.slug)
 
-  require(&#x27;github-slug&#x27;)(process.cwd(), infoCommand)
+  require('github-slug')(process.cwd(), infoCommand)
 
   function infoCommand (err, slug) {
     if (err || !slug) {
-      log.error(&#x27;disable&#x27;, &#x27;Couldn\&#x27;t find a remote GitHub repository in this folder.\nTry passing the slug explicitly &#x27; + chalk
-.yellow(&#x27;greenkeeper enable --slug &#x3c;user&#x3e;/&#x3c;repository&#x3e;&#x27;))
+      log.error('disable', 'Couldn\'t find a remote GitHub repository in this folder.\nTry passing the slug explicitly ' + chalk
+.yellow('greenkeeper enable --slug &lt;user&gt;/&lt;repository&gt;'))
       process.exit(1)
     }
 
-    log.info(&#x27;info&#x27;, &#x27;The GitHub slug is:&#x27;, slug)
+    log.info('info', 'The GitHub slug is:', slug)
 
-    log.http(&#x27;info&#x27;, &#x27;Sending request&#x27;)
+    log.http('info', 'Sending request')
     request({
-      method: &#x27;GET&#x27;,
-      url: flags.api + &#x27;packages/&#x27; + slug + &#x27;?include_branches=true&#x27;,
+      method: 'GET',
+      url: flags.api + 'packages/' + slug + '?include_branches=true',
       json: true,
       headers: {
-        Authorization: &#x27;Bearer &#x27; + flags.token
+        Authorization: 'Bearer ' + flags.token
       }
     }, function (err, res, data) {
       if (err) {
-        log.error(&#x27;info&#x27;, err.message)
+        log.error('info', err.message)
         process.exit(2)
       }
 
       if (data.disabled) {
-        log.error(&#x27;info&#x27;, &#x27;greenkeeper isn’t enabled for this repository&#x27;)
+        log.error('info', 'greenkeeper isnâ€™t enabled for this repository')
         process.exit(1)
       }
 
       if (data.statusCode === 400) {
-        log.error(&#x27;info&#x27;, &#x27;Couldn’t find a repository with this slug.&#x27;)
-        log.error(&#x27;info&#x27;, &#x27;The repository has to exist on GitHub and it has to be public,&#x27;)
-        log.error(&#x27;info&#x27;, &#x27;or you have to have to have a private plan. To verify run &#x27; + chalk.yellow(&#x27;greenkeeper whoami&#x27;))
-        log.error(&#x27;info&#x27;, &#x27;If you have just recently created this repository try running &#x27; + chalk.yellow(&#x27;greenkeeper sync&#x27;))
-        log.error(&#x27;info&#x27;, &#x27;You need admin access to enable repositories.&#x27;)
-        log.error(&#x27;info&#x27;, &#x27;If you think this error really shouldn’t appear let us look into it with &#x27; + chalk.yellow(&#x27;greenkeeper
- support&#x27;))
+        log.error('info', 'Couldnâ€™t find a repository with this slug.')
+        log.error('info', 'The repository has to exist on GitHub and it has to be public,')
+        log.error('info', 'or you have to have to have a private plan. To verify run ' + chalk.yellow('greenkeeper whoami'))
+        log.error('info', 'If you have just recently created this repository try running ' + chalk.yellow('greenkeeper sync'))
+        log.error('info', 'You need admin access to enable repositories.')
+        log.error('info', 'If you think this error really shouldnâ€™t appear let us look into it with ' + chalk.yellow('greenkeeper
+ support'))
         process.exit(1)
       }
 
       if (data.statusCode === 409) {
-        log.error(&#x27;info&#x27;, &#x27;Conflict! We appear to have this repository in our system several times\nThis can happen if you have
-moved or recreated the repository\nWe can fix this though, please contact us at &#x27; + chalk.yellow(&#x27;greenkeeper support&#x27;))
+        log.error('info', 'Conflict! We appear to have this repository in our system several times\nThis can happen if you have
+moved or recreated the repository\nWe can fix this though, please contact us at ' + chalk.yellow('greenkeeper support'))
         process.exit(1)
       }
 
       if (data.error) {
-        log.error(&#x27;info&#x27;, data.error)
+        log.error('info', data.error)
         process.exit(2)
       }
 
-      console.log(&#x27;greenkeeper is enabled for this repository&#x27;)
+      console.log('greenkeeper is enabled for this repository')
       var prs = data.branches
         .filter(function (branch) {
-          return branch.pr &#x26;&#x26; branch.pr.state === &#x27;open&#x27;
+          return branch.pr &amp;&amp; branch.pr.state === 'open'
         })
-      if (prs.length &#x3e; 0) console.log(&#x27;Open pull requests: &#x27;)
+      if (prs.length &gt; 0) console.log('Open pull requests: ')
       prs.forEach(function (branch) {
-        console.log(&#x27;- &#x27; + chalk.green(&#x27;#&#x27; + branch.pr.number) + &#x27; &#x27; + branch.dependency + &#x27;@&#x27; + branch.version + &#x27; &#x27; + chalk.grey
+        console.log('- ' + chalk.green('#' + branch.pr.number) + ' ' + branch.dependency + '@' + branch.version + ' ' + chalk.grey
 (moment(branch.created_at).fromNow()))
       })
-      if (prs.length &#x3e; 0) console.log(&#x27;Older pull requests might not be shown.&#x27;)
+      if (prs.length &gt; 0) console.log('Older pull requests might not be shown.')
     })
   }
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">...
-case &#x27;delete&#x27;:
+case 'delete':
   return del(commands)
-case &#x27;list&#x27;:
+case 'list':
   return list(commands)
-case &#x27;path&#x27;:
+case 'path':
   return console.log(rc.getPath())
 default:
-  log.<span class="apidocCodeKeywordSpan">info</span>(&#x27;config&#x27;, rc.getPath())
-  log.error(&#x27;config&#x27;, [
-    &#x27;Usage:&#x27;,
-    chalk.yellow(&#x27;greenkeeper config set &#x3c;key&#x3e; &#x3c;value&#x3e;&#x27;),
-    chalk.yellow(&#x27;greenkeeper config get [&#x3c;key&#x3e;]&#x27;),
-    chalk.yellow(&#x27;greenkeeper config delete &#x3c;key&#x3e;&#x27;),
-    chalk.yellow(&#x27;greenkeeper config list&#x27;)
-  ].join(&#x27;\n&#x27;))
+  log.<span class="apidocCodeKeywordSpan">info</span>('config', rc.getPath())
+  log.error('config', [
+    'Usage:',
+    chalk.yellow('greenkeeper config set &lt;key&gt; &lt;value&gt;'),
+    chalk.yellow('greenkeeper config get [&lt;key&gt;]'),
+    chalk.yellow('greenkeeper config delete &lt;key&gt;'),
+    chalk.yellow('greenkeeper config list')
+  ].join('\n'))
 ...</pre></li>
     </ul>
 
@@ -1922,38 +1915,38 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">list = function (flags) {
-  log.verbose(&#x27;list&#x27;, &#x27;starting command&#x27;)
+  log.verbose('list', 'starting command')
 
   if (!flags.token) {
-    log.error(&#x27;list&#x27;, &#x27;Login required. Run &#x27; + chalk.yellow(&#x27;greenkeeper login&#x27;))
+    log.error('list', 'Login required. Run ' + chalk.yellow('greenkeeper login'))
     process.exit(1)
   }
 
-  log.http(&#x27;list&#x27;, &#x27;Sending request&#x27;)
+  log.http('list', 'Sending request')
   request({
-    url: flags.api + &#x27;packages&#x27;,
+    url: flags.api + 'packages',
     json: true,
     headers: {
-      Authorization: &#x27;Bearer &#x27; + flags.token
+      Authorization: 'Bearer ' + flags.token
     }
   }, function (err, res, data) {
     if (err) {
-      log.error(&#x27;list&#x27;, err.message)
+      log.error('list', err.message)
       process.exit(2)
     }
 
     if (!data.packages) {
-      log.error(&#x27;list&#x27;, res.statusMessage + (res.body.message ? &#x27;: &#x27; + res.body.message : &#x27;&#x27;))
+      log.error('list', res.statusMessage + (res.body.message ? ': ' + res.body.message : ''))
       process.exit(2)
     }
 
     if (!data.packages.length) {
-      log.error(&#x27;list&#x27;, &#x27;No repositories enabled yet&#x27;)
+      log.error('list', 'No repositories enabled yet')
     }
-    _.orderBy(data.all, [&#x27;is_enabler&#x27;, &#x27;name&#x27;], [&#x27;desc&#x27;, &#x27;asc&#x27;])
+    _.orderBy(data.all, ['is_enabler', 'name'], ['desc', 'asc'])
     .forEach(function (repo) {
       if (!repo.enabled) return
-      console.log(repo.name, repo.is_enabler ? chalk.green(&#x27;(enabled by you)&#x27;) : &#x27;&#x27;)
+      console.log(repo.name, repo.is_enabler ? chalk.green('(enabled by you)') : '')
     })
   })
 }</pre></li>
@@ -1976,53 +1969,53 @@ default:
     <ul>
     <li>description and source-code<pre class="apidocCodePre">login = function (flags) {
   logo()
-  log.verbose(&#x27;login&#x27;, &#x27;starting command&#x27;)
+  log.verbose('login', 'starting command')
 
-  if (flags.token &#x26;&#x26; !flags.force) {
-    log.error(&#x27;login&#x27;, story.error_already_logged_in)
+  if (flags.token &amp;&amp; !flags.force) {
+    log.error('login', story.error_already_logged_in)
     process.exit(1)
   }
 
   var id = randomString({length: 32})
-  log.verbose(&#x27;login&#x27;, &#x27;id&#x27;, id)
+  log.verbose('login', 'id', id)
 
-  log.verbose(&#x27;login&#x27;, &#x27;Getting token from API and opening GitHub login&#x27;)
+  log.verbose('login', 'Getting token from API and opening GitHub login')
 
   getToken(flags, id, function (data) {
     if (data.disallowedSignup) {
-      log.info(&#x27;login&#x27;, &#x27;Signing up for the old Greenkeeper oAuth application is no longer supported.&#x27;)
-      log.info(&#x27;login&#x27;, &#x27;The new GitHub Integration was opened instead.&#x27;)
+      log.info('login', 'Signing up for the old Greenkeeper oAuth application is no longer supported.')
+      log.info('login', 'The new GitHub Integration was opened instead.')
       return
     }
 
-    rc.set(&#x27;api&#x27;, flags.api)
-    rc.set(nerfDart(flags.api) + &#x27;token&#x27;, data.token)
-    rc.set(nerfDart(flags.api) + &#x27;admin&#x27;, flags.admin)
+    rc.set('api', flags.api)
+    rc.set(nerfDart(flags.api) + 'token', data.token)
+    rc.set(nerfDart(flags.api) + 'admin', flags.admin)
 
-    log.info(&#x27;login&#x27;, &#x27;That was successful, now syncing all your GitHub repositories&#x27;)
+    log.info('login', 'That was successful, now syncing all your GitHub repositories')
     flags.token = data.token
     sync(flags, function (err, repos) {
       if (err) {
-        log.error(&#x27;login&#x27;, err.message)
+        log.error('login', err.message)
         process.exit(2)
       }
-      log.info(&#x27;login&#x27;, &#x27;Done syncing &#x27; + repos.length + &#x27; repositories&#x27;)
-      console.log(&#x27;You are now logged in, synced and all set up!&#x27;)
-      log.info(&#x27;login&#x27;, &#x27;Find out how to get started with&#x27;, &#x27;&#x27; + chalk.yellow(&#x27;greenkeeper start&#x27;))
+      log.info('login', 'Done syncing ' + repos.length + ' repositories')
+      console.log('You are now logged in, synced and all set up!')
+      log.info('login', 'Find out how to get started with', '' + chalk.yellow('greenkeeper start'))
     })
   })
 
-  if (!flags[&#x27;private&#x27;] &#x26;&#x26; !_.has(flags, &#x27;private&#x27;)) {
+  if (!flags['private'] &amp;&amp; !_.has(flags, 'private')) {
     return checkEnterprise(function (err, flags, isEnterprise) {
       if (err) {
-        log.error(&#x27;login&#x27;, err.message)
+        log.error('login', err.message)
         process.exit(2)
       }
       openAuth(isEnterprise)
     })(flags)
   }
 
-  openAuth(flags[&#x27;private&#x27;])
+  openAuth(flags['private'])
 
   function openAuth (pvt) {
     var query = {
@@ -2035,12 +2028,12 @@ default:
       query.access_token = flags.token
     }
 
-    var url = flags.api + &#x27;login?&#x27; + qs.encode(query)
+    var url = flags.api + 'login?' + qs.encode(query)
 
-    log.verbose(&#x27;login&#x27;, &#x27;Open &#x27; + url)
+    log.verbose('login', 'Open ' + url)
     open(url, function (err, stdout, stderr) {
       if (err) {
-        console.log(&#x27;Login from this URL:&#x27;, url)
+        console.log('Login from this URL:', url)
       }
     })
   }
@@ -2063,34 +2056,34 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">logout = function (flags) {
-  log.verbose(&#x27;logout&#x27;, &#x27;starting command&#x27;)
+  log.verbose('logout', 'starting command')
 
   if (!flags.token) {
-    log.error(&#x27;logout&#x27;, story.error_already_logged_out)
+    log.error('logout', story.error_already_logged_out)
     process.exit(1)
   }
 
-  log.http(&#x27;logout&#x27;, &#x27;Sending request&#x27;)
+  log.http('logout', 'Sending request')
   request({
-    method: &#x27;DELETE&#x27;,
+    method: 'DELETE',
     json: true,
-    url: flags.api + &#x27;tokens&#x27;,
+    url: flags.api + 'tokens',
     headers: {
-      Authorization: &#x27;Bearer &#x27; + flags.token
+      Authorization: 'Bearer ' + flags.token
     }
   }, function (err, res, data) {
     if (err) {
-      log.error(&#x27;logout&#x27;, err.message)
+      log.error('logout', err.message)
       process.exit(2)
     }
 
     if (data.ok) {
-      rc.unset(&#x27;token&#x27;)
-      rc.unset(nerfDart(flags.api) + &#x27;token&#x27;)
+      rc.unset('token')
+      rc.unset(nerfDart(flags.api) + 'token')
       return console.log(story.logged_out)
     }
 
-    log.error(&#x27;logout&#x27;, res.statusMessage + (res.body.message ? &#x27;: &#x27; + res.body.message : &#x27;&#x27;))
+    log.error('logout', res.statusMessage + (res.body.message ? ': ' + res.body.message : ''))
     process.exit(2)
   })
 }</pre></li>
@@ -2114,9 +2107,9 @@ default:
     <li>description and source-code<pre class="apidocCodePre">npm_verify = function (flags) {
   var pkg
   try {
-    pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), &#x27;package.json&#x27;)))
+    pkg = JSON.parse(fs.readFileSync(path.join(process.cwd(), 'package.json')))
   } catch (e) {
-    log.error(&#x27;npm-verify&#x27;, &#x27;No package.json in this project&#x27;)
+    log.error('npm-verify', 'No package.json in this project')
     process.exit(1)
   }
 
@@ -2128,20 +2121,20 @@ default:
   ))
 
   var scoped = dependencies.filter(function (dependency) {
-    return dependency[0] === &#x27;@&#x27;
+    return dependency[0] === '@'
   })
 
   if (scoped.length === 0) {
-    log.info(&#x27;npm-verify&#x27;, &#x27;No scoped packages.&#x27;)
+    log.info('npm-verify', 'No scoped packages.')
     process.exit()
   }
 
   request({
-    method: &#x27;POST&#x27;,
-    url: flags.api + &#x27;npm/verify&#x27;,
+    method: 'POST',
+    url: flags.api + 'npm/verify',
     json: true,
     headers: {
-      Authorization: &#x27;Bearer &#x27; + flags.token
+      Authorization: 'Bearer ' + flags.token
     },
     body: {
       dependencies: scoped,
@@ -2149,15 +2142,15 @@ default:
     }
   }, function (err, res, results) {
     if (err) {
-      log.error(&#x27;npm-verify&#x27;, err)
+      log.error('npm-verify', err)
       process.exit(2)
     }
-    var failed = _.some(results.dependencies, [&#x27;valid&#x27;, false])
-    if (failed) log.info(&#x27;npm-verify&#x27;, &#x27;You might need to run &#x27; + chalk.yellow(&#x27;greenkeeper npm-access&#x27;))
+    var failed = _.some(results.dependencies, ['valid', false])
+    if (failed) log.info('npm-verify', 'You might need to run ' + chalk.yellow('greenkeeper npm-access'))
     results.dependencies.forEach(function (dep) {
-      console.log(&#x27;   &#x27;, chalk.bold(dep.name), dep.valid
-        ? process.platform === &#x27;darwin&#x27; ? emoji.get(&#x27;white_check_mark&#x27;) : chalk.green(&#x27;accessible&#x27;)
-        : process.platform === &#x27;darwin&#x27; ? emoji.get(&#x27;x&#x27;) : chalk.red(&#x27;inaccessible&#x27;)
+      console.log('   ', chalk.bold(dep.name), dep.valid
+        ? process.platform === 'darwin' ? emoji.get('white_check_mark') : chalk.green('accessible')
+        : process.platform === 'darwin' ? emoji.get('x') : chalk.red('inaccessible')
       )
     })
     process.exit()
@@ -2181,18 +2174,18 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">organization_access = function (flags) {
-  log.verbose(&#x27;organization-access&#x27;, &#x27;starting command&#x27;)
+  log.verbose('organization-access', 'starting command')
 
   if (!flags.token) {
-    log.info(&#x27;organization-access&#x27;, &#x27;Not logged in.&#x27;)
+    log.info('organization-access', 'Not logged in.')
     process.exit(1)
   }
 
   story.forEach(function (message) {
-    log.info(&#x27;organization-access&#x27;, message)
+    log.info('organization-access', message)
   })
-  var url = flags.api + &#x27;login/organization-access&#x27;
-  log.verbose(&#x27;organization-access&#x27;, &#x27;Open &#x27; + url)
+  var url = flags.api + 'login/organization-access'
+  log.verbose('organization-access', 'Open ' + url)
   open(url)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2213,44 +2206,44 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">postpublish = function (flags) {
-  var pkgPath = path.join(process.cwd(), &#x27;package.json&#x27;)
+  var pkgPath = path.join(process.cwd(), 'package.json')
   var pkgFile = fs.readFileSync(pkgPath)
   var pkg
   try {
     pkg = jsonPreserveIndent(pkgFile)
   } catch (e) {
-    log.error(&#x27;postpublish&#x27;, &#x27;Could not parse package.json&#x27;)
+    log.error('postpublish', 'Could not parse package.json')
     process.exit(1)
   }
 
-  if (pkg.get(&#x27;name[0]&#x27;) !== &#x27;@&#x27;) log.warn(&#x27;postpublish&#x27;, &#x27;This is not a scoped package. &#x22;greenkeeper-postpublish&#x22; should not be
- required.&#x27;)
+  if (pkg.get('name[0]') !== '@') log.warn('postpublish', 'This is not a scoped package. "greenkeeper-postpublish" should not be
+ required.')
 
-  if (pkg.get(&#x27;devDependencies.greenkeeper-postpublish&#x27;)) {
-    log.info(&#x27;postpublish&#x27;, &#x27;greenkeeper-postpublish is already installed&#x27;)
+  if (pkg.get('devDependencies.greenkeeper-postpublish')) {
+    log.info('postpublish', 'greenkeeper-postpublish is already installed')
     process.exit()
   }
 
-  if (pkg.get(&#x27;scripts.postpublish&#x27;)) {
-    log.error(&#x27;postpublish&#x27;, &#x27;There is already a postpublish script present&#x27;, &#x27;&#x22;postpublish&#x22;: &#x22;&#x27; + pkg.scripts.postpublish + &#x27;&#x22;&#x27;)
+  if (pkg.get('scripts.postpublish')) {
+    log.error('postpublish', 'There is already a postpublish script present', '"postpublish": "' + pkg.scripts.postpublish + '"')
     process.exit(1)
   }
 
-  pkg.set(&#x27;scripts.postpublish&#x27;, &#x27;greenkeeper-postpublish&#x27;)
+  pkg.set('scripts.postpublish', 'greenkeeper-postpublish')
 
   fs.writeFileSync(pkgPath, pkg.format())
 
-  log.verbose(&#x27;postpublish&#x27;, &#x27;Updated the package.json&#x27;)
+  log.verbose('postpublish', 'Updated the package.json')
 
-  log.info(&#x27;postpublish&#x27;, &#x27;Installing greenkeeper-postpublish&#x27;)
+  log.info('postpublish', 'Installing greenkeeper-postpublish')
   var spin = spinner()
-  exec(&#x27;npm install greenkeeper-postpublish --save-dev&#x27;, function (err, stdout, stderr) {
+  exec('npm install greenkeeper-postpublish --save-dev', function (err, stdout, stderr) {
     clearInterval(spin)
     if (err) {
-      log.error(&#x27;postpublish&#x27;, &#x27;Failed to install greenkeeper-postpublish&#x27;, err)
+      log.error('postpublish', 'Failed to install greenkeeper-postpublish', err)
       process.exit(1)
     }
-    log.info(&#x27;postpublish&#x27;, &#x27;greenkeeper-postpublish installed and added as devDependency&#x27;)
+    log.info('postpublish', 'greenkeeper-postpublish installed and added as devDependency')
   })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2271,12 +2264,12 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">signup = function (flags) {
-  log.verbose(&#x27;signup&#x27;, &#x27;starting command&#x27;)
+  log.verbose('signup', 'starting command')
 
-  log.info(&#x27;signup&#x27;, &#x27;Signing up for the old Greenkeeper oAuth application is no longer supported.&#x27;)
-  log.info(&#x27;signup&#x27;, &#x27;Opening the new GitHub Integration instead.&#x27;)
+  log.info('signup', 'Signing up for the old Greenkeeper oAuth application is no longer supported.')
+  log.info('signup', 'Opening the new GitHub Integration instead.')
 
-  open(&#x27;https://git.io/uptodate&#x27;)
+  open('https://git.io/uptodate')
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2316,17 +2309,17 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">support = function (flags) {
-  log.verbose(&#x27;support&#x27;, &#x27;starting command&#x27;)
+  log.verbose('support', 'starting command')
 
   if (!flags.token) {
-    log.info(&#x27;support&#x27;, &#x27;Not logged in. Opening GitHub issues.&#x27;)
-    open(&#x27;https://github.com/greenkeeperio/greenkeeper&#x27;)
+    log.info('support', 'Not logged in. Opening GitHub issues.')
+    open('https://github.com/greenkeeperio/greenkeeper')
     process.exit(1)
   }
 
-  log.info(&#x27;support&#x27;, &#x27;Opening GitHub issues (free plan) or Intercom&#x27;)
+  log.info('support', 'Opening GitHub issues (free plan) or Intercom')
 
-  open(flags.api + &#x27;support?access_token=&#x27; + flags.token)
+  open(flags.api + 'support?access_token=' + flags.token)
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
     </ul>
@@ -2346,21 +2339,21 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">sync = function (flags) {
-  log.verbose(&#x27;sync&#x27;, &#x27;starting command&#x27;)
+  log.verbose('sync', 'starting command')
 
   if (!flags.token) {
-    log.error(&#x27;sync&#x27;, story.error_no_login_first)
+    log.error('sync', story.error_no_login_first)
     process.exit(1)
   }
 
-  log.http(&#x27;sync&#x27;, &#x27;Sending request&#x27;)
-  log.info(&#x27;sync&#x27;, &#x27;This might take a while&#x27;)
+  log.http('sync', 'Sending request')
+  log.info('sync', 'This might take a while')
   sync(flags, function (err, repos) {
     if (err) {
-      log.error(&#x27;sync&#x27;, err.message)
+      log.error('sync', err.message)
       process.exit(2)
     }
-    console.log(repos.sort().join(&#x27;\n&#x27;))
+    console.log(repos.sort().join('\n'))
   })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2399,15 +2392,15 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">upgrade = function (flags) {
-  if (flags.api === &#x27;https://api.greenkeeper.io/&#x27;) return callback(null, flags, false)
+  if (flags.api === 'https://api.greenkeeper.io/') return callback(null, flags, false)
   request({
-    method: &#x27;GET&#x27;,
+    method: 'GET',
     json: true,
     url: flags.api
   }, function (err, res, data) {
     if (err) return callback(err, flags)
     if (res.statusCode !== 200) return callback(new Error(res.statusCode), flags)
-    callback(null, flags, data.environment === &#x27;enterprise&#x27;)
+    callback(null, flags, data.environment === 'enterprise')
   })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2428,10 +2421,10 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">web_app = function (flags) {
-  var url = &#x27;https://app.greenkeeper.io&#x27;
+  var url = 'https://app.greenkeeper.io'
   open(url, function (err) {
-    if (err) return console.log(&#x27;Open this URL:&#x27;, url)
-    rc.set(&#x27;web_interface_beta_banner&#x27;, 11)
+    if (err) return console.log('Open this URL:', url)
+    rc.set('web_interface_beta_banner', 11)
   })
 }</pre></li>
     <li>example usage<pre class="apidocCodePre">n/a</pre></li>
@@ -2452,30 +2445,30 @@ default:
     </h2>
     <ul>
     <li>description and source-code<pre class="apidocCodePre">whoami = function (flags) {
-  log.verbose(&#x27;whoami&#x27;, &#x27;starting command&#x27;)
+  log.verbose('whoami', 'starting command')
 
   if (!flags.token) {
-    log.error(&#x27;whoami&#x27;, &#x27;Login required. Run &#x27; + chalk.yellow(&#x27;greenkeeper login&#x27;))
+    log.error('whoami', 'Login required. Run ' + chalk.yellow('greenkeeper login'))
     process.exit(1)
   }
 
-  log.info(&#x27;whoami&#x27;, &#x27;If you’re missing organizations run &#x27; + chalk.yellow(&#x27;greenkeeper access&#x27;))
+  log.info('whoami', 'If youâ€™re missing organizations run ' + chalk.yellow('greenkeeper access'))
 
-  log.http(&#x27;whoami&#x27;, &#x27;Sending request&#x27;)
+  log.http('whoami', 'Sending request')
   request({
-    url: flags.api + &#x27;whoami&#x27;,
+    url: flags.api + 'whoami',
     json: true,
     headers: {
-      Authorization: &#x27;Bearer &#x27; + flags.token
+      Authorization: 'Bearer ' + flags.token
     }
   }, function (err, res, data) {
     if (err) {
-      log.error(&#x27;whoami&#x27;, err.message)
+      log.error('whoami', err.message)
       process.exit(2)
     }
 
     if (!data.name) {
-      log.error(&#x27;whoami&#x27;, res.statusMessage + (res.body.message ? &#x27;: &#x27; + res.body.message : &#x27;&#x27;))
+      log.error('whoami', res.statusMessage + (res.body.message ? ': ' + res.body.message : ''))
       process.exit(2)
     }
 
@@ -2494,3 +2487,4 @@ default:
     ]
 </div>
 </div>
+</body></html>
