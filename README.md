@@ -1,9 +1,11 @@
 # api documentation for  [greenkeeper (v4.2.1)](https://greenkeeper.io)  [![npm package](https://img.shields.io/npm/v/npmdoc-greenkeeper.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-greenkeeper) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-greenkeeper.svg)](https://travis-ci.org/npmdoc/node-npmdoc-greenkeeper)
 #### Your software, up to date, all the time
 
-[![NPM](https://nodei.co/npm/greenkeeper.png?downloads=true)](https://www.npmjs.com/package/greenkeeper)
+[![NPM](https://nodei.co/npm/greenkeeper.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/greenkeeper)
 
-[![apidoc](https://npmdoc.github.io/node-npmdoc-greenkeeper/build/screenCapture.buildNpmdoc.browser._2Fhome_2Ftravis_2Fbuild_2Fnpmdoc_2Fnode-npmdoc-greenkeeper_2Ftmp_2Fbuild_2Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-greenkeeper/build/apidoc.html)
+- [https://npmdoc.github.io/node-npmdoc-greenkeeper/build/apidoc.html](https://npmdoc.github.io/node-npmdoc-greenkeeper/build/apidoc.html)
+
+[![apidoc](https://npmdoc.github.io/node-npmdoc-greenkeeper/build/screenCapture.buildCi.browser.%252Ftmp%252Fbuild%252Fapidoc.html.png)](https://npmdoc.github.io/node-npmdoc-greenkeeper/build/apidoc.html)
 
 ![npmPackageListing](https://npmdoc.github.io/node-npmdoc-greenkeeper/build/screenCapture.npmPackageListing.svg)
 
@@ -18,7 +20,6 @@
 {
     "author": {
         "name": "Stephan Bönnemann",
-        "email": "stephan@boennemann.me",
         "url": "http://boennemann.me"
     },
     "bin": {
@@ -78,14 +79,12 @@
     "main": "src/index.js",
     "maintainers": [
         {
-            "name": "boennemann",
-            "email": "stephan@boennemann.me"
+            "name": "boennemann"
         }
     ],
     "name": "greenkeeper",
     "optionalDependencies": {},
     "preferGlobal": true,
-    "readme": "ERROR: No README data found!",
     "repository": {
         "type": "git",
         "url": "git+https://github.com/greenkeeperio/greenkeeper.git"
@@ -100,16 +99,6 @@
     "version": "4.2.1"
 }
 ```
-
-
-
-# <a name="apidoc.tableOfContents"></a>[table of contents](#apidoc.tableOfContents)
-
-#### [module greenkeeper](#apidoc.module.greenkeeper)
-
-
-
-# <a name="apidoc.module.greenkeeper"></a>[module greenkeeper](#apidoc.module.greenkeeper)
 
 
 
