@@ -111,7 +111,7 @@
 <tspan x="10" y="1738">  │ └── string.prototype.codepointat@0.2.0 </tspan>
 <tspan x="10" y="1754">  ├─┬ npm-registry-client@7.5.0 </tspan>
 <tspan x="10" y="1770">  │ ├── graceful-fs@4.1.11 </tspan>
-<tspan x="10" y="1786">  │ ├─┬ normalize-package-data@2.3.6 </tspan>
+<tspan x="10" y="1786">  │ ├─┬ normalize-package-data@2.3.8 </tspan>
 <tspan x="10" y="1802">  │ │ ├── hosted-git-info@2.4.2 </tspan>
 <tspan x="10" y="1818">  │ │ ├─┬ is-builtin-module@1.0.0 </tspan>
 <tspan x="10" y="1834">  │ │ │ └── builtin-modules@1.1.1 </tspan>
@@ -126,10 +126,10 @@
 <tspan x="10" y="1978">  │ ├── semver@5.3.0 </tspan>
 <tspan x="10" y="1994">  │ └── slide@1.1.6 </tspan>
 <tspan x="10" y="2010">  ├─┬ npmlog@4.0.2 </tspan>
-<tspan x="10" y="2026">  │ ├─┬ are-we-there-yet@1.1.2 </tspan>
+<tspan x="10" y="2026">  │ ├─┬ are-we-there-yet@1.1.4 </tspan>
 <tspan x="10" y="2042">  │ │ └── delegates@1.0.0 </tspan>
 <tspan x="10" y="2058">  │ ├── console-control-strings@1.1.0 </tspan>
-<tspan x="10" y="2074">  │ └─┬ gauge@2.7.3 </tspan>
+<tspan x="10" y="2074">  │ └─┬ gauge@2.7.4 </tspan>
 <tspan x="10" y="2090">  │   ├── aproba@1.1.1 </tspan>
 <tspan x="10" y="2106">  │   ├── has-unicode@2.0.1 </tspan>
 <tspan x="10" y="2122">  │   ├── object-assign@4.1.1 </tspan>
@@ -150,7 +150,7 @@
 <tspan x="10" y="2362">  │ ├─┬ form-data@2.1.4 </tspan>
 <tspan x="10" y="2378">  │ │ └── asynckit@0.4.0 </tspan>
 <tspan x="10" y="2394">  │ ├─┬ har-validator@4.2.1 </tspan>
-<tspan x="10" y="2410">  │ │ ├─┬ ajv@4.11.6 </tspan>
+<tspan x="10" y="2410">  │ │ ├─┬ ajv@4.11.7 </tspan>
 <tspan x="10" y="2426">  │ │ │ ├── co@4.6.0 </tspan>
 <tspan x="10" y="2442">  │ │ │ └─┬ json-stable-stringify@1.0.1 </tspan>
 <tspan x="10" y="2458">  │ │ │   └── jsonify@0.0.0 </tspan>
@@ -206,7 +206,7 @@
 <tspan x="10" y="3258">  │ │ │ └── is-obj@1.0.1 </tspan>
 <tspan x="10" y="3274">  │ │ ├── osenv@0.1.4 </tspan>
 <tspan x="10" y="3290">  │ │ ├── uuid@2.0.3 </tspan>
-<tspan x="10" y="3306">  │ │ └─┬ write-file-atomic@1.3.1 </tspan>
+<tspan x="10" y="3306">  │ │ └─┬ write-file-atomic@1.3.3 </tspan>
 <tspan x="10" y="3322">  │ │   └── imurmurhash@0.1.4 </tspan>
 <tspan x="10" y="3338">  │ ├── is-npm@1.0.0 </tspan>
 <tspan x="10" y="3354">  │ ├─┬ latest-version@2.0.0 </tspan>
@@ -227,7 +227,7 @@
 <tspan x="10" y="3594">  │ │   │ ├── unzip-response@1.0.2 </tspan>
 <tspan x="10" y="3610">  │ │   │ └─┬ url-parse-lax@1.0.0 </tspan>
 <tspan x="10" y="3626">  │ │   │   └── prepend-http@1.0.4 </tspan>
-<tspan x="10" y="3642">  │ │   ├─┬ registry-auth-token@3.1.2 </tspan>
+<tspan x="10" y="3642">  │ │   ├─┬ registry-auth-token@3.3.0 </tspan>
 <tspan x="10" y="3658">  │ │   │ └─┬ rc@1.2.1 </tspan>
 <tspan x="10" y="3674">  │ │   │   ├── deep-extend@0.4.1 </tspan>
 <tspan x="10" y="3690">  │ │   │   ├── minimist@1.2.0 </tspan>
