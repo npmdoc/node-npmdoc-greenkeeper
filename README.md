@@ -1,4 +1,7 @@
-# api documentation for  [greenkeeper (v4.2.1)](https://greenkeeper.io)  [![npm package](https://img.shields.io/npm/v/npmdoc-greenkeeper.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-greenkeeper) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-greenkeeper.svg)](https://travis-ci.org/npmdoc/node-npmdoc-greenkeeper)
+# npmdoc-greenkeeper
+
+#### basic api documentation for  [greenkeeper (v4.2.1)](https://greenkeeper.io)  [![npm package](https://img.shields.io/npm/v/npmdoc-greenkeeper.svg?style=flat-square)](https://www.npmjs.org/package/npmdoc-greenkeeper) [![travis-ci.org build-status](https://api.travis-ci.org/npmdoc/node-npmdoc-greenkeeper.svg)](https://travis-ci.org/npmdoc/node-npmdoc-greenkeeper)
+
 #### Your software, up to date, all the time
 
 [![NPM](https://nodei.co/npm/greenkeeper.png?downloads=true&downloadRank=true&stars=true)](https://www.npmjs.com/package/greenkeeper)
